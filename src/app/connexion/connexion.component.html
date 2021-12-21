@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-header>
+    <img mat-card-avatar alt="Schtroumpf logo" src="https://www.rts.ch/2018/10/01/10/16/9882686.image?w=0&h=NaN">
+    <mat-card-title>Connexion</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>
+      Bonjour à tous ! Bienvenue sur notre site internet. Retrouvez ici tous vos Schtroumpfs préféré, et aider mon
+      équipe à tous vous connaître.
+    </p>
+    <p>
+      Restons en contact !
+      L’équipe
+      du Schtroumpf Reporter ! 😊
+    </p>
+
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle checked={{connected}} (change)="connectView(true)">Connexion</mat-button-toggle>
+      <mat-button-toggle (change)="connectView(false)">Inscrption</mat-button-toggle>
+    </mat-button-toggle-group>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+
+<div class="card">
+  <div class="card-block">
+    <form [formGroup]="form" (ngSubmit)="submit(form.value)">
+      <mat-form-field class="form-group" appearance="standard">
+        <mat-label>Nom :</mat-label>
+        <input matInput type="text" autofocus class="form-control" formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field class="form-group" appearance="standard">
+        <mat-label>Mot de passe:</mat-label>
+        <input matInput type="password" class="form-control" formControlName="password" />
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!connected" appearance="standard" class="form-group">
+        <mat-label>Classe:</mat-label>
+        <mat-select class="form-control" formControlName="role">
+          <mat-option *ngFor="let item of roles" value="{{item.name}}">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <button mat-raised-button class="btn btn-primary btn-block">Submit</button>
+
+    </form>
+  </div>
+</div>
+</mat-card-actions>
+
+</mat-card>

@@ -1,0 +1,32 @@
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <caption hidden='true'>Liste des élèves</caption>
+
+  <!-- column name -->
+  <ng-container matColumnDef="name">
+    <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header> name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- column id -->
+  <ng-container matColumnDef="role">
+    <th scope="col" mat-header-cell mat-sort-header *matHeaderCellDef> role </th>
+    <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+  </ng-container>
+
+  <!-- column description -->
+  <!-- todo: récuperer id et affichage conditionel -->
+  <ng-container matColumnDef="friend">
+    <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header> Amis </th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="addFriend()" mat-button> add</button>
+      <button (click)="deleteFriend()" mat-button>delete</button>
+    </td>
+  </ng-container>
+
+
+  <!-- Header definition -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

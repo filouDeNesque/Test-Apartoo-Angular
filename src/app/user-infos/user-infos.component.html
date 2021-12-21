@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-header>
+    <img mat-card-avatar alt="Schtroumpf logo" src="https://www.rts.ch/2018/10/01/10/16/9882686.image?w=0&h=NaN">
+    <mat-card-title>{{name}}</mat-card-title>
+    <mat-card-subtitle>Rôle: {{role}}</mat-card-subtitle>
+    <button *ngIf="!updateView" mat-raised-button class="btn btn-primary btn-block" (click)="updateViewReq(true)">Modifier</button>
+  </mat-card-header>
+
+  <mat-card-content *ngIf="updateView">
+    <div class="card">
+      <div class="card-block">
+        <form [formGroup]="form" (ngSubmit)="updaterole(form.value)">
+
+          <mat-form-field  appearance="standard" class="form-group">
+            <mat-label>Classe:</mat-label>
+            <mat-select class="form-control" formControlName="role">
+              <mat-option *ngFor="let item of roles" value="{{item.name}}">{{item.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <button mat-raised-button class="btn btn-primary btn-block">Submit</button>
+
+        </form>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>
